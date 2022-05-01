@@ -1,6 +1,6 @@
 ﻿namespace EldenRingDatabase.Data.Models
 {
-    public class Consumable
+    public class AmmunitionType
     {
     }
 }

@@ -17,9 +17,9 @@
         [MaxLength(WeaponNameMaxLen)]
         public string Name { get; set; }
 
-        [Required]
-        [MaxLength(WeaponTypeMaxLen)]
-        public string Type { get; set; }
+        public int WeaponTypeId { get; set; }
+
+        public WeaponType WeaponType { get; init; }
 
         [Required]
         public string ImageUrl { get; set; }

@@ -15,5 +15,9 @@
         public int Holy { get; set; }
 
         public int Crit { get; set; }
+
+        public int? Sor { get; set; }
+
+        public int? Inc { get; set; }
     }
 }

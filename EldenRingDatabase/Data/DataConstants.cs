@@ -22,8 +22,8 @@
 
         public const int WeaponNameMinLen = 3;
         public const int WeaponNameMaxLen = 20;
-        public const int WeaponTypeMinLen = 3;
-        public const int WeaponTypeMaxLen = 20;
+        public const int WeaponTypeNameMinLen = 3;
+        public const int WeaponTypeNameMaxLen = 20;
 
         public const int ScalingMaxLen = 1;
 
@@ -38,8 +38,12 @@
 
         public const int ShieldNameMinLen = 3;
         public const int ShieldNameMaxLen = 20;
+        public const int ShieldTypeNameMinLen = 5;
+        public const int ShieldTypeNameMaxLen = 25;
 
-        public const int ShieldTypeMinLen = 5;
-        public const int ShieldTypeMaxLen = 25;
+        public const int MagicSpellNameMinLen = 3;
+        public const int MagicSpellNameMaxLen = 50;
+        public const int MagicSpellTypeNameMinLen = 5;
+        public const int MagicSpellTypeNameMaxLen = 50;
     }
 }

@@ -12,9 +12,9 @@
         [MaxLength(ShieldNameMaxLen)]
         public string Name { get; set; }
 
-        [Required]
-        [MaxLength(ShieldTypeMaxLen)]
-        public string Type { get; set; }
+        public int ShieldTypeId { get; set; }
+
+        public ShieldType ShieldType { get; init; }
 
         [Required]
         public string ImageUrl { get; set; }

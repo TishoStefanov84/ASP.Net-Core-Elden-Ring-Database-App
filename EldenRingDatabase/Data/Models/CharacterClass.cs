@@ -19,7 +19,6 @@
         [Required]
         public string ImageUrl { get; set; }
 
-
         public int RuneLevel { get; set; }
 
         public int Vigor { get; set; }

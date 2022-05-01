@@ -9,7 +9,7 @@
             this.Weapons = new HashSet<Weapon>();
             this.Shields = new HashSet<Shield>();
             this.MagicSpells = new HashSet<MagicSpell>();
-            this.Consumables = new HashSet<Consumable>();
+            this.Ammunitions = new HashSet<Ammunition>();
         }
 
         public int Id { get; init; }
@@ -20,6 +20,6 @@
 
         public ICollection<MagicSpell> MagicSpells { get; set; }
 
-        public ICollection<Consumable> Consumables { get; set; }
+        public ICollection<Ammunition> Ammunitions { get; set; }
     }
 }
