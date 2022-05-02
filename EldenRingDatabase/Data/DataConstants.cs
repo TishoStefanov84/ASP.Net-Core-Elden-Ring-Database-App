@@ -48,5 +48,8 @@
 
         public const int AmmunitionTypeNameMinLen = 3;
         public const int AmmunitionTypeNameMaxLen = 20;
+
+        public const int TalismanNamemMinLen = 3;
+        public const int TalismanNameMaxLen = 50;
     }
 }

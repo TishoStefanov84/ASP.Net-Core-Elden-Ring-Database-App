@@ -63,6 +63,10 @@
 
         public DbSet<WeaponType> WeaponTypes { get; init; }
 
+        public DbSet<Talisman> Talismans { get; init; }
+
+        public DbSet<TalismanEffect> TalismanEffects { get; init; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
@@ -147,6 +151,13 @@
              .WithMany(w => w.Weapons)
              .HasForeignKey(w => w.StatusEffectId)
              .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<TalismanEffect>()
+                .HasOne(t => t.Talisman)
+                .WithMany(t => t.TalismanEffects)
+                .HasForeignKey(t => t.TalismanId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }
