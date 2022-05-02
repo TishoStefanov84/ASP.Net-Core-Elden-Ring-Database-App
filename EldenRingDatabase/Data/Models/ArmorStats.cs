@@ -11,5 +11,6 @@
         public int ResistanceId { get; set; }
 
         public Resistance Resistance { get; init; }
+
     }
 }

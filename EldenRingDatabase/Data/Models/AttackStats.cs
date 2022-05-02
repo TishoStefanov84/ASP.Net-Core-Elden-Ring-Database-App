@@ -1,7 +1,12 @@
 ﻿namespace EldenRingDatabase.Data.Models
 {
+    using System.Collections.Generic;
+
     public class AttackStats
     {
+        public AttackStats()
+            => this.Stats = new HashSet<Stats>();
+
         public int Id { get; init; }
 
         public int Phy { get; set; }
@@ -19,5 +24,7 @@
         public int? Sor { get; set; }
 
         public int? Inc { get; set; }
+
+        public ICollection<Stats> Stats { get; init; }
     }
 }

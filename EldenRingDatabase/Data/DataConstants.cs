@@ -45,5 +45,8 @@
         public const int MagicSpellNameMaxLen = 50;
         public const int MagicSpellTypeNameMinLen = 5;
         public const int MagicSpellTypeNameMaxLen = 50;
+
+        public const int AmmunitionTypeNameMinLen = 3;
+        public const int AmmunitionTypeNameMaxLen = 20;
     }
 }
