@@ -2,6 +2,7 @@
 {
     using EldenRingDatabase.Data;
     using EldenRingDatabase.Data.Models;
+    using EldenRingDatabase.Models;
     using EldenRingDatabase.Models.Ammunitions;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;

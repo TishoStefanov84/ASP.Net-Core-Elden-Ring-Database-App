@@ -159,6 +159,13 @@
                 .HasForeignKey(t => t.TalismanId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder
+                .Entity<Shield>()
+                .HasOne(s => s.DamageType)
+                .WithMany(d => d.Shields)
+                .HasForeignKey(s => s.DamageTypeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(builder);
         }
 

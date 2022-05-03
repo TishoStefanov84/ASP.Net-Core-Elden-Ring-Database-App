@@ -30,7 +30,7 @@
 
         public AttackStatsViewModel AttackStats { get; set; }
 
-        [Display(Name = "Ammunition Type")]
+        [Display(Name = "Damage Type")]
         public int DamageTypeId { get; init; }
 
         public ICollection<DamageTypeViewModel> DamageTypes { get; set; }

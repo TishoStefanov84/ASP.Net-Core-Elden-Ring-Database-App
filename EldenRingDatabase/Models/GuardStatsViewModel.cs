@@ -1,10 +1,10 @@
-﻿namespace EldenRingDatabase.Models.Ammunitions
+﻿namespace EldenRingDatabase.Models
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class AttackStatsViewModel
+    public class GuardStatsViewModel
     {
-        [Range(0 , 1000)]
+        [Range(0, 1000)]
         public int Phy { get; set; }
 
         [Range(0, 1000)]
@@ -20,12 +20,6 @@
         public int Holy { get; set; }
 
         [Range(0, 1000)]
-        public int Crit { get; set; }
-
-        [Range(0, 1000)]
-        public int? Sor { get; set; }
-
-        [Range(0, 1000)]
-        public int? Inc { get; set; }
+        public int Boost { get; set; }
     }
 }

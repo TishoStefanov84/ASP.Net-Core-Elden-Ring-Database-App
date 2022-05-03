@@ -45,32 +45,32 @@
             <h3 class="heading-margin text-center">Add Attack Stats</h3>
             <div class="form-group">
                 <label asp-for="AttackStats.Phy"></label>
-                <input asp-for="AttackStats.Phy" class="form-control">
+                <input asp-for="AttackStats.Phy" type="number" min="0" class="form-control">
                 <span asp-validation-for="AttackStats.Phy" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AttackStats.Mag"></label>
-                <input asp-for="AttackStats.Mag" class="form-control">
+                <input asp-for="AttackStats.Mag" type="number" min="0" class="form-control">
                 <span asp-validation-for="AttackStats.Mag" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AttackStats.Fire"></label>
-                <input asp-for="AttackStats.Fire" class="form-control">
+                <input asp-for="AttackStats.Fire" type="number" min="0" class="form-control">
                 <span asp-validation-for="AttackStats.Fire" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AttackStats.Ligt"></label>
-                <input asp-for="AttackStats.Ligt" class="form-control">
+                <input asp-for="AttackStats.Ligt" type="number" min="0" class="form-control">
                 <span asp-validation-for="AttackStats.Ligt" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AttackStats.Holy"></label>
-                <input asp-for="AttackStats.Holy" class="form-control">
+                <input asp-for="AttackStats.Holy" type="number" min="0" class="form-control">
                 <span asp-validation-for="AttackStats.Holy" class="small text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AttackStats.Crit"></label>
-                <input asp-for="AttackStats.Crit" class="form-control">
+                <input asp-for="AttackStats.Crit" type="number" min="0" class="form-control">
                 <span asp-validation-for="AttackStats.Crit" class="small text-danger"></span>
             </div>
             <input class="btn btn-primary float-right" type="submit" value="Save" />

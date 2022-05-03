@@ -1,5 +1,5 @@
-﻿namespace EldenRingDatabase.Models.Ammunitions
-{
+﻿namespace EldenRingDatabase.Models
+{ 
     public class DamageTypeViewModel
     {
         public int Id { get; init; }

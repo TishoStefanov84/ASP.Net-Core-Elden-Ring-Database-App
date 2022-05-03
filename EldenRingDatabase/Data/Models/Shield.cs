@@ -31,5 +31,9 @@
         public Skill Skill { get; set; }
 
         public double Weight { get; set; }
+
+        public int DamageTypeId { get; set; }
+
+        public DamageType DamageType { get; set; }
     }
 }

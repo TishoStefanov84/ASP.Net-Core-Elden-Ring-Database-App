@@ -11,6 +11,7 @@
         {
             this.Ammunitions = new HashSet<Ammunition>();
             this.Weapons = new HashSet<Weapon>();
+            this.Shields = new HashSet<Shield>();
         }
 
         public int Id { get; init; }
@@ -25,5 +26,7 @@
         public ICollection<Ammunition> Ammunitions { get; init; }
 
         public ICollection<Weapon> Weapons { get; init; }
+
+        public ICollection<Shield> Shields { get; init; }
     }
 }
