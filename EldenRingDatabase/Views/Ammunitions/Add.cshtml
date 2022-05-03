@@ -1,0 +1,79 @@
+﻿@model AddAmmunitionFormModel
+
+@{ 
+    ViewData["Title"] = "Add Ammunition";
+}
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Add Ammunition</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmmunitionTypeId"></label>
+                <select asp-for="AmmunitionTypeId" class="form-control">
+                    @foreach (var ammunitionType in Model.AmmunitionTypes)
+                    {
+                        <option value="@ammunitionType.Id">@ammunitionType.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DamageTypeId"></label>
+                <select asp-for="DamageTypeId" class="form-control">
+                    @foreach (var damageType in Model.DamageTypes)
+                    {
+                        <option value="@damageType.Id">@damageType.Name</option>
+                    }
+                </select>
+            </div>
+            <h3 class="heading-margin text-center">Add Attack Stats</h3>
+            <div class="form-group">
+                <label asp-for="AttackStats.Phy"></label>
+                <input asp-for="AttackStats.Phy" class="form-control">
+                <span asp-validation-for="AttackStats.Phy" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackStats.Mag"></label>
+                <input asp-for="AttackStats.Mag" class="form-control">
+                <span asp-validation-for="AttackStats.Mag" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackStats.Fire"></label>
+                <input asp-for="AttackStats.Fire" class="form-control">
+                <span asp-validation-for="AttackStats.Fire" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackStats.Ligt"></label>
+                <input asp-for="AttackStats.Ligt" class="form-control">
+                <span asp-validation-for="AttackStats.Ligt" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackStats.Holy"></label>
+                <input asp-for="AttackStats.Holy" class="form-control">
+                <span asp-validation-for="AttackStats.Holy" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AttackStats.Crit"></label>
+                <input asp-for="AttackStats.Crit" class="form-control">
+                <span asp-validation-for="AttackStats.Crit" class="small text-danger"></span>
+            </div>
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+        </form>
+    </div>
+</div>    

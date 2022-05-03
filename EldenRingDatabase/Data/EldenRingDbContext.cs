@@ -11,7 +11,7 @@
         {
         }
 
-        public DbSet<Ammunition> Ammunitions { get; init; }
+       public DbSet<Ammunition> Ammunitions { get; init; }
 
         public DbSet<AmmunitionType> AmmunitionTypes { get; init; }
 
@@ -69,19 +69,19 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder
-                .Entity<Ammunition>()
-                .HasOne(a => a.AmmunitionType)
-                .WithMany(a => a.Ammunitions)
-                .HasForeignKey(a => a.AmmunitionTypeId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder
-                .Entity<Ammunition>()
-                .HasOne(a => a.DamageType)
-                .WithMany(d => d.Ammunitions)
-                .HasForeignKey(a => a.DamageTypeId)
-                .OnDelete(DeleteBehavior.Restrict);
+           builder
+               .Entity<Ammunition>()
+               .HasOne(a => a.AmmunitionType)
+               .WithMany(a => a.Ammunitions)
+               .HasForeignKey(a => a.AmmunitionTypeId)
+               .OnDelete(DeleteBehavior.Restrict);
+           
+           builder
+               .Entity<Ammunition>()
+               .HasOne(a => a.DamageType)
+               .WithMany(d => d.Ammunitions)
+               .HasForeignKey(a => a.DamageTypeId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Entity<MagicSpell>()

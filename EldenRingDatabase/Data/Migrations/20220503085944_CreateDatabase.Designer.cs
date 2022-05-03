@@ -4,14 +4,16 @@ using EldenRingDatabase.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EldenRingDatabase.Data.Migrations
+namespace EldenRingDatabase.Migrations
 {
     [DbContext(typeof(EldenRingDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220503085944_CreateDatabase")]
+    partial class CreateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,16 +53,20 @@ namespace EldenRingDatabase.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EquipmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -124,8 +130,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
@@ -241,8 +247,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("RuneLevel")
                         .HasColumnType("int");
@@ -280,8 +286,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
@@ -306,8 +312,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -387,8 +393,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
@@ -450,8 +456,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
@@ -483,8 +489,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
@@ -679,8 +685,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("ShieldTypeId")
                         .HasColumnType("int");
@@ -716,8 +722,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -744,8 +750,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -805,8 +811,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -885,8 +891,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("SkillId")
                         .HasColumnType("int");
@@ -927,8 +933,8 @@ namespace EldenRingDatabase.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -1140,13 +1146,13 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.DamageType", null)
                         .WithMany()
                         .HasForeignKey("DamageTypesId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.Weapon", null)
                         .WithMany()
                         .HasForeignKey("WeaponsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1161,7 +1167,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.AttackStats", "AttackStats")
                         .WithMany()
                         .HasForeignKey("AttackStatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.DamageType", "DamageType")
@@ -1186,31 +1192,31 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.ArmorStats", "ArmorStats")
                         .WithMany()
                         .HasForeignKey("ArmorStatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.ChestArmor", "ChestArmor")
                         .WithMany()
                         .HasForeignKey("ChestArmorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.Gauntlets", "Gauntlets")
                         .WithMany()
                         .HasForeignKey("GauntletsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.Helm", "Helm")
                         .WithMany()
                         .HasForeignKey("HelmId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.LegArmor", "LegArmor")
                         .WithMany()
                         .HasForeignKey("LegArmorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ArmorStats");
@@ -1229,13 +1235,13 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.DmgNegation", "DmgNegation")
                         .WithMany()
                         .HasForeignKey("DmgNegationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.Resistance", "Resistance")
                         .WithMany()
                         .HasForeignKey("ResistanceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("DmgNegation");
@@ -1248,7 +1254,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.ArmorSet", "ArmorSet")
                         .WithMany()
                         .HasForeignKey("ArmorSetId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ArmorSet");
@@ -1259,7 +1265,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.ArmorStats", "ArmorStats")
                         .WithMany()
                         .HasForeignKey("ArmorStatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ArmorStats");
@@ -1277,7 +1283,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.ArmorStats", "ArmorStats")
                         .WithMany()
                         .HasForeignKey("ArmorStatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ArmorStats");
@@ -1288,7 +1294,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.ArmorStats", "ArmorStats")
                         .WithMany()
                         .HasForeignKey("ArmorStatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ArmorStats");
@@ -1299,7 +1305,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.ArmorStats", "ArmorStats")
                         .WithMany()
                         .HasForeignKey("ArmorStatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ArmorStats");
@@ -1320,7 +1326,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.Requires", "Requires")
                         .WithMany()
                         .HasForeignKey("RequiresId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("MagicSpellType");
@@ -1349,7 +1355,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.Stats", "Stats")
                         .WithMany()
                         .HasForeignKey("StatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ShieldType");
@@ -1420,7 +1426,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("EldenRingDatabase.Data.Models.Stats", "Stats")
                         .WithMany()
                         .HasForeignKey("StatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EldenRingDatabase.Data.Models.StatusEffect", "StatusEffect")
@@ -1449,7 +1455,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1458,7 +1464,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1467,7 +1473,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1476,13 +1482,13 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1491,7 +1497,7 @@ namespace EldenRingDatabase.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
