@@ -18,10 +18,15 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Ammunitions" asp-action="Add">Add Ammunition</a>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shields" asp-action="Add">Add Shield</a>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Skills" asp-action="Add">Add Skill</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Add
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Ammunitions" asp-action="Add">Add Ammunition</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Shields" asp-action="Add">Add Shield</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Skills" asp-action="Add">Add Skill</a>
+                            </div>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

@@ -3,3 +3,191 @@
 @{
     ViewData["Title"] = "Add Shield";
 }
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Add Shield</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShieldTypeId"></label>
+                <select asp-for="ShieldTypeId" class="form-control">
+                    @foreach (var shieldType in Model.ShieldTypes)
+                    {
+                        <option value="@shieldType.Id">@shieldType.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DamageTypeId"></label>
+                <select asp-for="DamageTypeId" class="form-control">
+                    @foreach (var damageType in Model.DamageTypes)
+                    {
+                        <option value="@damageType.Id">@damageType.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SkillId"></label>
+                <select asp-for="SkillId" class="form-control">
+                    @foreach (var shieldSkill in Model.ShieldSkills)
+                    {
+                        <option value="@shieldSkill.Id">@shieldSkill.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight"></label>
+                <input asp-for="Weight" type="text" class="form-control">
+                <span asp-validation-for="Weight" class="small text-danger"></span>
+            </div>
+            <h3 class="heading-margin text-center">Add Attack Stats</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Phy"></label>
+                    <input asp-for="ShieldStats.AttackStats.Phy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Phy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Mag"></label>
+                    <input asp-for="ShieldStats.AttackStats.Mag" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Mag" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Fire"></label>
+                    <input asp-for="ShieldStats.AttackStats.Fire" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Fire" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Ligt"></label>
+                    <input asp-for="ShieldStats.AttackStats.Ligt" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Ligt" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Holy"></label>
+                    <input asp-for="ShieldStats.AttackStats.Holy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Holy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Crit"></label>
+                    <input asp-for="ShieldStats.AttackStats.Crit" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Crit" class="small text-danger"></span>
+                </div>
+            </div>
+            <h3 class="heading-margin text-center">Add Guard Stats</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Phy"></label>
+                    <input asp-for="ShieldStats.AttackStats.Phy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Phy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Mag"></label>
+                    <input asp-for="ShieldStats.AttackStats.Mag" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Mag" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Fire"></label>
+                    <input asp-for="ShieldStats.AttackStats.Fire" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Fire" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Ligt"></label>
+                    <input asp-for="ShieldStats.AttackStats.Ligt" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Ligt" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Holy"></label>
+                    <input asp-for="ShieldStats.AttackStats.Holy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Holy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.AttackStats.Crit"></label>
+                    <input asp-for="ShieldStats.AttackStats.Crit" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.AttackStats.Crit" class="small text-danger"></span>
+                </div>
+            </div>
+            <h3 class="heading-margin text-center">Add Scaling</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Scaling.Endurance"></label>
+                    <input asp-for="ShieldStats.Scaling.Endurance" type="text" class="form-control">
+                    <span asp-validation-for="ShieldStats.Scaling.Endurance" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Scaling.Strength"></label>
+                    <input asp-for="ShieldStats.Scaling.Strength" type="text" class="form-control">
+                    <span asp-validation-for="ShieldStats.Scaling.Strength" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Scaling.Dexterity"></label>
+                    <input asp-for="ShieldStats.Scaling.Dexterity" type="text" class="form-control">
+                    <span asp-validation-for="ShieldStats.Scaling.Dexterity" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Scaling.Intelligence"></label>
+                    <input asp-for="ShieldStats.Scaling.Intelligence" type="text" class="form-control">
+                    <span asp-validation-for="ShieldStats.Scaling.Intelligence" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Scaling.Faith"></label>
+                    <input asp-for="ShieldStats.Scaling.Faith" type="text" class="form-control">
+                    <span asp-validation-for="ShieldStats.Scaling.Faith" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Scaling.Arcane"></label>
+                    <input asp-for="ShieldStats.Scaling.Arcane" type="text" class="form-control">
+                    <span asp-validation-for="ShieldStats.Scaling.Arcane" class="small text-danger"></span>
+                </div>
+            </div>
+            <h3 class="heading-margin text-center">Add Shield Requirements</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Requires.Endurance"></label>
+                    <input asp-for="ShieldStats.Requires.Endurance" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.Requires.Endurance" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Requires.Strength"></label>
+                    <input asp-for="ShieldStats.Requires.Strength" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.Requires.Strength" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Requires.Dexterity"></label>
+                    <input asp-for="ShieldStats.Requires.Dexterity" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.Requires.Dexterity" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Requires.Intelligence"></label>
+                    <input asp-for="ShieldStats.Requires.Intelligence" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.Requires.Intelligence" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Requires.Faith"></label>
+                    <input asp-for="ShieldStats.Requires.Faith" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.Requires.Faith" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ShieldStats.Requires.Arcane"></label>
+                    <input asp-for="ShieldStats.Requires.Arcane" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ShieldStats.Requires.Arcane" class="small text-danger"></span>
+                </div>
+            </div>
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
