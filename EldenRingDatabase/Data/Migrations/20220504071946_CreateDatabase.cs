@@ -251,7 +251,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Descripption = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false)
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -472,7 +472,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -495,7 +495,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -518,7 +518,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -541,7 +541,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -563,7 +563,7 @@ namespace EldenRingDatabase.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
                     HelmId = table.Column<int>(type: "int", nullable: false),
                     ChestArmorId = table.Column<int>(type: "int", nullable: false),
@@ -634,7 +634,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.ArmorSetId,
                         principalTable: "ArmorSets",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -751,12 +751,19 @@ namespace EldenRingDatabase.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StatsId = table.Column<int>(type: "int", nullable: false),
                     SkillId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    DamageTypeId = table.Column<int>(type: "int", nullable: false),
                     EquipmentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Shields", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Shields_DamageTypes_DamageTypeId",
+                        column: x => x.DamageTypeId,
+                        principalTable: "DamageTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Shields_Equipment_EquipmentId",
                         column: x => x.EquipmentId,
@@ -793,7 +800,7 @@ namespace EldenRingDatabase.Migrations
                     WeaponTypeId = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Discription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     StatsId = table.Column<int>(type: "int", nullable: false),
                     SkillId = table.Column<int>(type: "int", nullable: false),
                     StatusEffectId = table.Column<int>(type: "int", nullable: false),
@@ -1004,6 +1011,11 @@ namespace EldenRingDatabase.Migrations
                 column: "RequiresId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Shields_DamageTypeId",
+                table: "Shields",
+                column: "DamageTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Shields_EquipmentId",
                 table: "Shields",
                 column: "EquipmentId");
@@ -1116,13 +1128,13 @@ namespace EldenRingDatabase.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "DamageTypes");
-
-            migrationBuilder.DropTable(
                 name: "Weapons");
 
             migrationBuilder.DropTable(
                 name: "MagicSpellType");
+
+            migrationBuilder.DropTable(
+                name: "DamageTypes");
 
             migrationBuilder.DropTable(
                 name: "ShieldTypes");

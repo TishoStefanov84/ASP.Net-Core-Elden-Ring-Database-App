@@ -55,5 +55,8 @@
         public const int TalismanNameMaxLen = 50;
 
         public const int DiscriptionMinLen = 50;
+
+        public const int WeightMinLen = 1;
+        public const int WeightMaxLen = 5;
     }
 }

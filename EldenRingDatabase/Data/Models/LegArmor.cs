@@ -18,7 +18,9 @@
 
         public ArmorStats ArmorStats { get; init; }
 
-        public double Weight { get; set; }
+        [Required]
+        [MaxLength(WeightMaxLen)]
+        public string Weight { get; set; }
 
         [Required]
         public string Description { get; set; }

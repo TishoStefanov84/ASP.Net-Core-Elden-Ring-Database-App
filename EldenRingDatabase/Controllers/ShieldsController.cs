@@ -23,7 +23,7 @@
         });
 
         [HttpPost]
-        public IActionResult Add(AddShieldFormModel shield, StatsViewModel stats)
+        public IActionResult Add(AddShieldFormModel shield)
         {
             if (!this.data.ShieldTypes.Any(s => s.Id == shield.ShieldTypeId))
             {
@@ -62,42 +62,43 @@
                 {
                     AttackStats = new AttackStats
                     {
-                        Phy = stats.AttackStats.Phy,
-                        Mag = stats.AttackStats.Mag,
-                        Fire = stats.AttackStats.Fire,
-                        Ligt = stats.AttackStats.Ligt,
-                        Holy = stats.AttackStats.Holy,
-                        Crit = stats.AttackStats.Crit
+                        Phy = shield.ShieldStats.AttackStats.Phy,
+                        Mag = shield.ShieldStats.AttackStats.Mag,
+                        Fire = shield.ShieldStats.AttackStats.Fire,
+                        Ligt = shield.ShieldStats.AttackStats.Ligt,
+                        Holy = shield.ShieldStats.AttackStats.Holy,
+                        Crit = shield.ShieldStats.AttackStats.Crit
                     },
                     GuardStats = new GuardStats
                     {
-                        Phy = stats.GuardStats.Phy,
-                        Mag = stats.GuardStats.Mag,
-                        Fire = stats.GuardStats.Fire,
-                        Ligt = stats.GuardStats.Ligt,
-                        Holy = stats.GuardStats.Holy,
-                        Boost = stats.GuardStats.Boost
+                        Phy = shield.ShieldStats.GuardStats.Phy,
+                        Mag = shield.ShieldStats.GuardStats.Mag,
+                        Fire = shield.ShieldStats.GuardStats.Fire,
+                        Ligt = shield.ShieldStats.GuardStats.Ligt,
+                        Holy = shield.ShieldStats.GuardStats.Holy,
+                        Boost = shield.ShieldStats.GuardStats.Boost
                     },
                     Scaling = new Scaling
                     {
-                        Endurance = stats.Scaling.Endurance,
-                        Strength = stats.Scaling.Strength,
-                        Dexterity = stats.Scaling.Dexterity,
-                        Intelligence = stats.Scaling.Intelligence,
-                        Faith = stats.Scaling.Faith,
-                        Arcane = stats.Scaling.Arcane
+                        Endurance = shield.ShieldStats.Scaling.Endurance,
+                        Strength = shield.ShieldStats.Scaling.Strength,
+                        Dexterity = shield.ShieldStats.Scaling.Dexterity,
+                        Intelligence = shield.ShieldStats.Scaling.Intelligence,
+                        Faith = shield.ShieldStats.Scaling.Faith,
+                        Arcane = shield.ShieldStats.Scaling.Arcane
                     },
                     Requires = new Requires
                     {
-                        Endurance = stats.Requires.Endurance,
-                        Strength = stats.Requires.Strength,
-                        Dexterity = stats.Requires.Dexterity,
-                        Intelligence = stats.Requires.Intelligence,
-                        Faith = stats.Requires.Faith,
-                        Arcane = stats.Requires.Arcane
+                        Endurance = shield.ShieldStats.Requires.Endurance,
+                        Strength = shield.ShieldStats.Requires.Strength,
+                        Dexterity = shield.ShieldStats.Requires.Dexterity,
+                        Intelligence = shield.ShieldStats.Requires.Intelligence,
+                        Faith = shield.ShieldStats.Requires.Faith,
+                        Arcane = shield.ShieldStats.Requires.Arcane
                     }
                 }
             };
+
 
             this.data.Add(shieldData);
             this.data.SaveChanges();

@@ -37,6 +37,8 @@
         public int DamageTypeId { get; set; }
         public ICollection<DamageTypeViewModel> DamageTypes { get; set; }
 
-        public double Weight { get; set; }
+        [Required]
+        [StringLength(WeightMaxLen, MinimumLength = WeightMinLen)]
+        public string Weight { get; set; }
     }
 }
