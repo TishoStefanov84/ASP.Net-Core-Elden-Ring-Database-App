@@ -1,0 +1,104 @@
+﻿@model AddChestArmorsFormModel
+
+@{       ViewData["Title"] = "Add Chest Armor";
+}
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Add Skill</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight"></label>
+                <input asp-for="Weight" type="number" min="0" class="form-control">
+                <span asp-validation-for="Weight" class="small text-danger"></span>
+            </div>
+            <h3 class="heading-margin text-center">Add DmgNegation Stats</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.Phy"></label>
+                    <input asp-for="ArmorStats.DmgNegation.Phy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.Phy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.VSStrike"></label>
+                    <input asp-for="ArmorStats.DmgNegation.VSStrike" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.VSStrike" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.VSSlash"></label>
+                    <input asp-for="ArmorStats.DmgNegation.VSSlash" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.VSSlash" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.VSPierce"></label>
+                    <input asp-for="ArmorStats.DmgNegation.VSPierce" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.VSPierce" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.Magic"></label>
+                    <input asp-for="ArmorStats.DmgNegation.Magic" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.Magic" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.Fire"></label>
+                    <input asp-for="ArmorStats.DmgNegation.Fire" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.Fire" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.Ligt"></label>
+                    <input asp-for="ArmorStats.DmgNegation.Ligt" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.Ligt" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.DmgNegation.Holy"></label>
+                    <input asp-for="ArmorStats.DmgNegation.Holy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.DmgNegation.Holy" class="small text-danger"></span>
+                </div>
+            </div>
+            <h3 class="heading-margin text-center">Add Resistance Stats</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.Resistance.Immunity"></label>
+                    <input asp-for="ArmorStats.Resistance.Immunity" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.Resistance.Immunity" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.Resistance.Robustness"></label>
+                    <input asp-for="ArmorStats.Resistance.Robustness" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.Resistance.Robustness" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.Resistance.Focus"></label>
+                    <input asp-for="ArmorStats.Resistance.Focus" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.Resistance.Focus" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.Resistance.Vitality"></label>
+                    <input asp-for="ArmorStats.Resistance.Vitality" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.Resistance.Vitality" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="ArmorStats.Resistance.Poise"></label>
+                    <input asp-for="ArmorStats.Resistance.Poise" type="number" min="0" class="form-control">
+                    <span asp-validation-for="ArmorStats.Resistance.Poise" class="small text-danger"></span>
+                </div>
+            </div>
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+        </form>
+    </div>
+</div>

@@ -39,10 +39,12 @@
 
         public ICollection<SkillViewModel> WeaponSkills { get; set; }
 
+        [Display(Name = "Damage Type")]
         public int DamageTypeId { get; init; }
 
         public ICollection<DamageTypeViewModel> DamageTypes { get; set; }
 
+        [Display(Name = "Status Effect")]
         public int StatusEffectId { get; init; }
 
         public ICollection<StatusEffectViewModel> StatusEffects { get; set; }

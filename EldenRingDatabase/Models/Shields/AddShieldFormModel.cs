@@ -34,6 +34,7 @@
 
         public ICollection<SkillViewModel> ShieldSkills { get; set; }
 
+        [Display(Name = "Damage Type")]
         public int DamageTypeId { get; set; }
 
         public ICollection<DamageTypeViewModel> DamageTypes { get; set; }
