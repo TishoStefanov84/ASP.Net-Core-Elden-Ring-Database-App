@@ -32,12 +32,12 @@
 
             if (!this.data.Skills.Any(s => s.Id == shield.SkillId))
             {
-                this.ModelState.AddModelError(nameof(shield.SkillId), "Skill not exist");
+                this.ModelState.AddModelError(nameof(shield.SkillId), "Skill not exist.");
             }
 
             if (!this.data.DamageTypes.Any(d => d.Id == shield.DamageTypeId))
             {
-                this.ModelState.AddModelError(nameof(Shield.DamageTypeId), "Damage type not exist");
+                this.ModelState.AddModelError(nameof(shield.DamageTypeId), "Damage type not exist.");
             }
 
             if (!this.ModelState.IsValid)
