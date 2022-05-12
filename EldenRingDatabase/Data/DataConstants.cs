@@ -35,6 +35,7 @@
 
         public const int StatusEffectNameMinLen = 3;
         public const int StatusEffectNameMaxLen = 50;
+        public const int StatusEffectEffectMinLen = 10;
 
         public const int ShieldNameMinLen = 3;
         public const int ShieldNameMaxLen = 50;
@@ -55,7 +56,7 @@
         public const int TalismanNameMaxLen = 50;
 
         public const int DiscriptionMinLen = 50;
-
+                
         public const int WeightMinLen = 1;
         public const int WeightMaxLen = 5;
     }
