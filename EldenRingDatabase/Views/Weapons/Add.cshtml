@@ -1,5 +1,208 @@
-﻿@model AddWeaponFormModel
+﻿@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@model AddWeaponFormModel
 
-@{ 
+@{
     ViewData["Title"] = "Add Weapon";
 }
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Add Shield</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeaponTypeId"></label>
+                <select asp-for="WeaponTypeId" class="form-control">
+                    @foreach (var weaponType in Model.WeaponTypes)
+                    {
+                        <option value="@weaponType.Id">@weaponType.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DamageTypeId"></label>
+                <select asp-for="DamageTypeId" class="form-control">
+                    @foreach (var damageType in Model.DamageTypes)
+                    {
+                        <option value="@damageType.Id">@damageType.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusEffectId"></label>
+                <select asp-for="StatusEffectId" class="form-control">
+                    @foreach (var statusEffect in Model.StatusEffects)
+                    {
+                        <option value="@statusEffect.Id">@statusEffect.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SkillId"></label>
+                <select asp-for="SkillId" class="form-control">
+                    @foreach (var weaponSkill in Model.WeaponSkills)
+                    {
+                        <option value="@weaponSkill.Id">@weaponSkill.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight"></label>
+                <input asp-for="Weight" type="text" class="form-control">
+                <span asp-validation-for="Weight" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsLegendary"></label>
+                <input asp-for="IsLegendary" class="form-control" value="true">
+                <span asp-validation-for="IsLegendary" class="small text-danger"></span>
+            </div>
+            <h3 class="heading-margin text-center">Add Attack Stats</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.AttackStats.Phy"></label>
+                    <input asp-for="WeaponStats.AttackStats.Phy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.AttackStats.Phy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.AttackStats.Mag"></label>
+                    <input asp-for="WeaponStats.AttackStats.Mag" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.AttackStats.Mag" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.AttackStats.Fire"></label>
+                    <input asp-for="WeaponStats.AttackStats.Fire" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.AttackStats.Fire" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.AttackStats.Ligt"></label>
+                    <input asp-for="WeaponStats.AttackStats.Ligt" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.AttackStats.Ligt" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.AttackStats.Holy"></label>
+                    <input asp-for="WeaponStats.AttackStats.Holy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.AttackStats.Holy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.AttackStats.Crit"></label>
+                    <input asp-for="WeaponStats.AttackStats.Crit" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.AttackStats.Crit" class="small text-danger"></span>
+                </div>
+            </div>
+            <h3 class="heading-margin text-center">Add Guard Stats</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.GuardStats.Phy"></label>
+                    <input asp-for="WeaponStats.GuardStats.Phy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.AttackStats.Phy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.GuardStats.Mag"></label>
+                    <input asp-for="WeaponStats.GuardStats.Mag" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.GuardStats.Mag" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.GuardStats.Fire"></label>
+                    <input asp-for="WeaponStats.GuardStats.Fire" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.GuardStats.Fire" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.GuardStats.Ligt"></label>
+                    <input asp-for="WeaponStats.GuardStats.Ligt" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.GuardStats.Ligt" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.GuardStats.Holy"></label>
+                    <input asp-for="WeaponStats.GuardStats.Holy" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.GuardStats.Holy" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.GuardStats.Boost"></label>
+                    <input asp-for="WeaponStats.GuardStats.Boost" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.GuardStats.Boost" class="small text-danger"></span>
+                </div>
+            </div>
+            <h3 class="heading-margin text-center">Add Scaling</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Scaling.Endurance"></label>
+                    <input asp-for="WeaponStats.Scaling.Endurance" type="text" class="form-control">
+                    <span asp-validation-for="WeaponStats.Scaling.Endurance" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Scaling.Strength"></label>
+                    <input asp-for="WeaponStats.Scaling.Strength" type="text" class="form-control">
+                    <span asp-validation-for="WeaponStats.Scaling.Strength" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Scaling.Dexterity"></label>
+                    <input asp-for="WeaponStats.Scaling.Dexterity" type="text" class="form-control">
+                    <span asp-validation-for="WeaponStats.Scaling.Dexterity" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Scaling.Intelligence"></label>
+                    <input asp-for="WeaponStats.Scaling.Intelligence" type="text" class="form-control">
+                    <span asp-validation-for="WeaponStats.Scaling.Intelligence" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Scaling.Faith"></label>
+                    <input asp-for="WeaponStats.Scaling.Faith" type="text" class="form-control">
+                    <span asp-validation-for="WeaponStats.Scaling.Faith" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Scaling.Arcane"></label>
+                    <input asp-for="WeaponStats.Scaling.Arcane" type="text" class="form-control">
+                    <span asp-validation-for="WeaponStats.Scaling.Arcane" class="small text-danger"></span>
+                </div>
+            </div>
+            <h3 class="heading-margin text-center">Add Shield Requirements</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Requires.Endurance"></label>
+                    <input asp-for="WeaponStats.Requires.Endurance" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.Requires.Endurance" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Requires.Strength"></label>
+                    <input asp-for="WeaponStats.Requires.Strength" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.Requires.Strength" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Requires.Dexterity"></label>
+                    <input asp-for="WeaponStats.Requires.Dexterity" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.Requires.Dexterity" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Requires.Intelligence"></label>
+                    <input asp-for="WeaponStats.Requires.Intelligence" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.Requires.Intelligence" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Requires.Faith"></label>
+                    <input asp-for="WeaponStats.Requires.Faith" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.Requires.Faith" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="WeaponStats.Requires.Arcane"></label>
+                    <input asp-for="WeaponStats.Requires.Arcane" type="number" min="0" class="form-control">
+                    <span asp-validation-for="WeaponStats.Requires.Arcane" class="small text-danger"></span>
+                </div>
+            </div>
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+        </form>
+    </div>
+</div>

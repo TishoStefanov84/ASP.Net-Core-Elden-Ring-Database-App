@@ -5,6 +5,7 @@
     using EldenRingDatabase.Models;
     using EldenRingDatabase.Models.Weapons;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -107,17 +108,8 @@
                 }
             };
 
-            foreach (var item in weapon.DamageTypes)
-            {
-
-                var damageType = new DamageType
-                {
-                    Id = item.Id,
-                    Name = item.Name
-                };
-
-                weaponData.DamageTypes.Add(damageType);
-            }
+            var damageType = this.data.DamageTypes.First(d => d.Id == weapon.DamageTypeId);
+            weaponData.DamageTypes.Add(damageType);
 
             this.data.Add(weaponData);
             this.data.SaveChanges();
