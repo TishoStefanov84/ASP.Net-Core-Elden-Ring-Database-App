@@ -4,20 +4,20 @@
     {
         public int Id { get; init; }
 
-        public int Phy { get; set; }
+        public double Phy { get; set; }
 
-        public int VSStrike { get; set; }
+        public double VSStrike { get; set; }
 
-        public int VSSlash { get; set; }
+        public double VSSlash { get; set; }
 
-        public int VSPierce { get; set; }
+        public double VSPierce { get; set; }
 
-        public int Magic { get; set; }
+        public double Magic { get; set; }
 
-        public int Fire { get; set; }
+        public double Fire { get; set; }
 
-        public int Ligt { get; set; }
+        public double Ligt { get; set; }
 
-        public int Holy { get; set; }
+        public double Holy { get; set; }
     }
 }

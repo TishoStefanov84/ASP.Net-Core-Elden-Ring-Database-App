@@ -59,5 +59,8 @@
                 
         public const int WeightMinLen = 1;
         public const int WeightMaxLen = 5;
+
+        public const int DmgNegationPropMinLen = 1;
+        public const int DmgNegationPropMaxLen = 5;
     }
 }

@@ -31,8 +31,7 @@
         public Skill Skill { get; set; }
 
         [Required]
-        [MaxLength(WeightMaxLen)]
-        public string Weight { get; set; }
+        public double Weight { get; set; }
 
         public int DamageTypeId { get; set; }
 

@@ -4,6 +4,7 @@
     using EldenRingDatabase.Data.Models;
     using EldenRingDatabase.Models.Armors;
     using Microsoft.AspNetCore.Mvc;
+    using System.Globalization;
 
     public class ChestArmorsController : Controller
     {
@@ -27,19 +28,19 @@
                 Name = chestArmor.Name,
                 ImageUrl = chestArmor.ImageUrl,
                 Description = chestArmor.Description,
-                Weight = chestArmor.Weight,
+                Weight = double.Parse(chestArmor.Weight, CultureInfo.InvariantCulture),
                 ArmorStats = new ArmorStats
                 {
                     DmgNegation = new DmgNegation
                     {
-                        Phy = chestArmor.ArmorStats.DmgNegation.Phy,
-                        VSStrike = chestArmor.ArmorStats.DmgNegation.VSStrike,
-                        VSSlash = chestArmor.ArmorStats.DmgNegation.VSSlash,
-                        VSPierce = chestArmor.ArmorStats.DmgNegation.VSPierce,
-                        Magic = chestArmor.ArmorStats.DmgNegation.Magic,
-                        Fire = chestArmor.ArmorStats.DmgNegation.Fire,
-                        Ligt = chestArmor.ArmorStats.DmgNegation.Ligt,
-                        Holy = chestArmor.ArmorStats.DmgNegation.Holy
+                        Phy = double.Parse(chestArmor.ArmorStats.DmgNegation.Phy, CultureInfo.InvariantCulture),
+                        VSStrike = double.Parse(chestArmor.ArmorStats.DmgNegation.VSStrike, CultureInfo.InvariantCulture),
+                        VSSlash = double.Parse(chestArmor.ArmorStats.DmgNegation.VSSlash, CultureInfo.InvariantCulture),
+                        VSPierce = double.Parse(chestArmor.ArmorStats.DmgNegation.VSPierce, CultureInfo.InvariantCulture),
+                        Magic = double.Parse(chestArmor.ArmorStats.DmgNegation.Magic, CultureInfo.InvariantCulture),
+                        Fire = double.Parse(chestArmor.ArmorStats.DmgNegation.Fire, CultureInfo.InvariantCulture),
+                        Ligt = double.Parse(chestArmor.ArmorStats.DmgNegation.Ligt, CultureInfo.InvariantCulture),
+                        Holy = double.Parse(chestArmor.ArmorStats.DmgNegation.Holy, CultureInfo.InvariantCulture)
                     },
                     Resistance = new Resistance
                     {
@@ -51,6 +52,7 @@
                     }
                 }
             };
+
 
             this.data.Add(chestArmorData);
             this.data.SaveChanges();

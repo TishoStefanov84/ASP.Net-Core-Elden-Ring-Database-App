@@ -131,10 +131,8 @@ namespace EldenRingDatabase.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -289,10 +287,9 @@ namespace EldenRingDatabase.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
+                    b.Property<double>("Weight")
                         .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -329,29 +326,29 @@ namespace EldenRingDatabase.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Fire")
-                        .HasColumnType("int");
+                    b.Property<double>("Fire")
+                        .HasColumnType("float");
 
-                    b.Property<int>("Holy")
-                        .HasColumnType("int");
+                    b.Property<double>("Holy")
+                        .HasColumnType("float");
 
-                    b.Property<int>("Ligt")
-                        .HasColumnType("int");
+                    b.Property<double>("Ligt")
+                        .HasColumnType("float");
 
-                    b.Property<int>("Magic")
-                        .HasColumnType("int");
+                    b.Property<double>("Magic")
+                        .HasColumnType("float");
 
-                    b.Property<int>("Phy")
-                        .HasColumnType("int");
+                    b.Property<double>("Phy")
+                        .HasColumnType("float");
 
-                    b.Property<int>("VSPierce")
-                        .HasColumnType("int");
+                    b.Property<double>("VSPierce")
+                        .HasColumnType("float");
 
-                    b.Property<int>("VSSlash")
-                        .HasColumnType("int");
+                    b.Property<double>("VSSlash")
+                        .HasColumnType("float");
 
-                    b.Property<int>("VSStrike")
-                        .HasColumnType("int");
+                    b.Property<double>("VSStrike")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -398,10 +395,8 @@ namespace EldenRingDatabase.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -463,10 +458,8 @@ namespace EldenRingDatabase.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -498,10 +491,8 @@ namespace EldenRingDatabase.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -708,10 +699,8 @@ namespace EldenRingDatabase.Migrations
                     b.Property<int>("StatsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -854,10 +843,8 @@ namespace EldenRingDatabase.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -923,10 +910,8 @@ namespace EldenRingDatabase.Migrations
                     b.Property<int>("WeaponTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Weight")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

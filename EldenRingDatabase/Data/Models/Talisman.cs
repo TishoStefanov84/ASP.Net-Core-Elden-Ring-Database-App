@@ -23,8 +23,7 @@
         public string Descripption { get; set; }
 
         [Required]
-        [MaxLength(WeightMaxLen)]
-        public string Weight { get; set; }
+        public double Weight { get; set; }
 
         public ICollection<TalismanEffect> TalismanEffects { get; init; }
     }

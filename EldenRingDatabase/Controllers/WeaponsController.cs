@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
 
     public class WeaponsController : Controller
@@ -64,7 +65,7 @@
                 Discription = weapon.Description,
                 WeaponTypeId = weapon.WeaponTypeId,
                 SkillId = weapon.SkillId,
-                Weight = weapon.Weight,
+                Weight = double.Parse(weapon.Weight, CultureInfo.InvariantCulture),
                 StatusEffectId = weapon.StatusEffectId,
                 IsLegendary = weapon.IsLegendary,
                 Stats = new Stats

@@ -99,14 +99,14 @@ namespace EldenRingDatabase.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Phy = table.Column<int>(type: "int", nullable: false),
-                    VSStrike = table.Column<int>(type: "int", nullable: false),
-                    VSSlash = table.Column<int>(type: "int", nullable: false),
-                    VSPierce = table.Column<int>(type: "int", nullable: false),
-                    Magic = table.Column<int>(type: "int", nullable: false),
-                    Fire = table.Column<int>(type: "int", nullable: false),
-                    Ligt = table.Column<int>(type: "int", nullable: false),
-                    Holy = table.Column<int>(type: "int", nullable: false)
+                    Phy = table.Column<double>(type: "float", nullable: false),
+                    VSStrike = table.Column<double>(type: "float", nullable: false),
+                    VSSlash = table.Column<double>(type: "float", nullable: false),
+                    VSPierce = table.Column<double>(type: "float", nullable: false),
+                    Magic = table.Column<double>(type: "float", nullable: false),
+                    Fire = table.Column<double>(type: "float", nullable: false),
+                    Ligt = table.Column<double>(type: "float", nullable: false),
+                    Holy = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -251,7 +251,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Descripption = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false)
+                    Weight = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -289,7 +289,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -310,7 +310,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -330,7 +330,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -348,13 +348,13 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -374,7 +374,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -394,13 +394,13 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.DmgNegationId,
                         principalTable: "DmgNegations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ArmorStats_Resistances_ResistanceId",
                         column: x => x.ResistanceId,
                         principalTable: "Resistances",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -472,7 +472,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Weight = table.Column<double>(type: "float", maxLength: 5, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -495,7 +495,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -518,7 +518,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -541,7 +541,7 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -563,7 +563,7 @@ namespace EldenRingDatabase.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     ArmorStatsId = table.Column<int>(type: "int", nullable: false),
                     HelmId = table.Column<int>(type: "int", nullable: false),
                     ChestArmorId = table.Column<int>(type: "int", nullable: false),
@@ -634,7 +634,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.ArmorSetId,
                         principalTable: "ArmorSets",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -684,7 +684,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.AttackStatsId,
                         principalTable: "AttackStats",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Ammunitions_DamageTypes_DamageTypeId",
                         column: x => x.DamageTypeId,
@@ -736,7 +736,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.RequiresId,
                         principalTable: "Requires",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -751,7 +751,7 @@ namespace EldenRingDatabase.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StatsId = table.Column<int>(type: "int", nullable: false),
                     SkillId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     DamageTypeId = table.Column<int>(type: "int", nullable: false),
                     EquipmentId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -787,7 +787,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.StatsId,
                         principalTable: "Stats",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -800,7 +800,7 @@ namespace EldenRingDatabase.Migrations
                     WeaponTypeId = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Discription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
                     StatsId = table.Column<int>(type: "int", nullable: false),
                     SkillId = table.Column<int>(type: "int", nullable: false),
                     StatusEffectId = table.Column<int>(type: "int", nullable: false),
@@ -827,7 +827,7 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.StatsId,
                         principalTable: "Stats",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Weapons_StatusEffects_StatusEffectId",
                         column: x => x.StatusEffectId,
@@ -857,13 +857,13 @@ namespace EldenRingDatabase.Migrations
                         column: x => x.DamageTypesId,
                         principalTable: "DamageTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DamageTypeWeapon_Weapons_WeaponsId",
                         column: x => x.WeaponsId,
                         principalTable: "Weapons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

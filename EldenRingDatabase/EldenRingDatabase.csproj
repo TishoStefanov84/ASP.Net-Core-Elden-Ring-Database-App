@@ -17,8 +17,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.16" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Armors\" />
-  </ItemGroup>
-
 </Project>

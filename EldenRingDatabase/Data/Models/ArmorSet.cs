@@ -15,8 +15,7 @@
         public string ImageUrl { get; set; }
 
         [Required]
-        [MaxLength(WeightMaxLen)]
-        public string Weight { get; set; }
+        public double Weight { get; set; }
 
         public int ArmorStatsId { get; set; }
 

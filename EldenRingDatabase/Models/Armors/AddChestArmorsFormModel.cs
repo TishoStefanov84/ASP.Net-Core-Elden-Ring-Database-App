@@ -16,10 +16,8 @@
         [Required]
         public string ImageUrl { get; set; }
 
-        [Display(Name = " Armor Stats")]
-        public int ArmorStatsId { get; set; }
 
-        public ArmorStats ArmorStats { get; init; }
+        public ArmorStatsViewModel ArmorStats { get; init; }
 
         [Required]
         [StringLength(WeightMaxLen, MinimumLength = WeightMinLen)]

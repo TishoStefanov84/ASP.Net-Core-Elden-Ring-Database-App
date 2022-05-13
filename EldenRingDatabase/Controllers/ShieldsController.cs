@@ -6,6 +6,7 @@
     using EldenRingDatabase.Models.Shields;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
 
     public class ShieldsController : Controller
@@ -56,7 +57,7 @@
                 Description = shield.Description,
                 ShieldTypeId = shield.ShieldTypeId,
                 SkillId = shield.SkillId,
-                Weight = shield.Weight,
+                Weight = double.Parse(shield.Weight, CultureInfo.InvariantCulture),
                 DamageTypeId = shield.DamageTypeId,
                 Stats = new Stats
                 {

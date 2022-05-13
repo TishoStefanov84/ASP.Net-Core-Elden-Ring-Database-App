@@ -3,30 +3,40 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
+    using static Data.DataConstants;
+
     public class DmgNegationViewModel
     {
-        [Range(0, 1000)]
-        public int Phy { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string Phy { get; set; }
 
-        [Range(0, 1000)]
-        public int VSStrike { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string VSStrike { get; set; }
 
-        [Range(0, 1000)]
-        public int VSSlash { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string VSSlash { get; set; }
 
-        [Range(0, 1000)]
-        public int VSPierce { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string VSPierce { get; set; }
 
-        [Range(0, 1000)]
-        public int Magic { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string Magic { get; set; }
 
-        [Range(0, 1000)]
-        public int Fire { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string Fire { get; set; }
 
-        [Range(0, 1000)]
-        public int Ligt { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string Ligt { get; set; }
 
-        [Range(0, 1000)]
-        public int Holy { get; set; }
+        [Required]
+        [StringLength(DmgNegationPropMaxLen, MinimumLength = DmgNegationPropMinLen)]
+        public string Holy { get; set; }
     }
 }
