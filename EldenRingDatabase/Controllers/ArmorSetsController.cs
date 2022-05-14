@@ -46,7 +46,6 @@
                 Weight = weight
             };
 
-
             this.data.Add(armorSetData);
             this.data.SaveChanges();
 

@@ -1,0 +1,85 @@
+﻿@model AddCharacterClassFormModel
+
+@{ 
+    ViewData["Title"] = "Add Class";
+}
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Add Class</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="RuneLevel"></label>
+                    <input asp-for="RuneLevel" type="number" min="0" class="form-control">
+                    <span asp-validation-for="RuneLevel" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Vigor"></label>
+                    <input asp-for="Vigor" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Vigor" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Mind"></label>
+                    <input asp-for="Mind" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Mind" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Endurance"></label>
+                    <input asp-for="Endurance" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Endurance" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Strength"></label>
+                    <input asp-for="Strength" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Strength" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Dexterity"></label>
+                    <input asp-for="Dexterity" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Dexterity" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Intelligence"></label>
+                    <input asp-for="Intelligence" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Intelligence" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Faith"></label>
+                    <input asp-for="Faith" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Faith" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Arcane"></label>
+                    <input asp-for="Arcane" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Arcane" class="small text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArmorSetId"></label>
+                <select asp-for="ArmorSetId" class="form-control">
+                    @foreach (var armorSet in Model.ArmorSets)
+                    {
+                        <option value="@armorSet.Id">@armorSet.Name</option>
+                    }
+                </select>
+            </div>
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
