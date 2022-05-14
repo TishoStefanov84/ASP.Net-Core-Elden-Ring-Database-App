@@ -52,6 +52,10 @@
                     }
                 }
             };
+
+            this.data.Add(helmData);
+            this.data.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
     }

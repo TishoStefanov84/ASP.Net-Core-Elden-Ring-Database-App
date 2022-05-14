@@ -53,6 +53,9 @@
                 }
             };
 
+            this.data.Add(legArmorData);
+            this.data.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
     }
