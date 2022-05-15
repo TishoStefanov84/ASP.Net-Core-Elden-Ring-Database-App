@@ -1,14 +1,11 @@
 ﻿namespace EldenRingDatabase.Data.Models
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants;
 
     public class CharacterClass
     {
-        public CharacterClass()
-            => this.Equipment = new HashSet<Equipment>();
 
         public int Id { get; init; }
 
@@ -37,7 +34,9 @@
 
         public int Arcane { get; set; }
 
-        public ICollection<Equipment> Equipment { get; set; }
+        public int EquipmentId { get; set; }
+
+        public Equipment Equipment { get; init; }
 
         public int ArmorSetId { get; set; }
 

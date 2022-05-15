@@ -1,5 +1,6 @@
 ﻿namespace EldenRingDatabase.Models.CharacterClasses
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -51,11 +52,30 @@
 
         [Display(Name = "Armor Set")]
         public int ArmorSetId { get; init; }
+
         public ICollection<ArmorSetViewModel> ArmorSets { get; set; }
 
-        [Display(Name = "Equipment")]
-        public int EquipmentId { get; init; }
+        [Display(Name = "Weapons")]
+        public List<int> WeaponId { get; init; }
 
-        public ICollection<EquipmentViewModel> Equipment { get; set; }
+        public ICollection<WeaponViewModel> Weapons { get; set; }
+
+        [Display(Name = "Shields")]
+        public List<int> ShieldId { get; init; }
+
+        public ICollection<ShieldViewModel> Shields { get; set; }
+
+        [Display(Name = "Magic Spells")]
+        public List<int> MagicSpellId { get; init; }
+
+        public ICollection<MagicSpellViewModel> MagicSpells { get; set; }
+
+        [Display(Name = "Ammunitions")]
+        public List<int> AmmunitionId { get; init; }
+
+        public ICollection<AmmunitionViewModel> Ammunitions { get; set; }
+
+        public EquipmentViewModel Equipment { get; set; }
+
     }
 }

@@ -3,6 +3,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants;
+
     public class ArmorSet
     {
         public int Id { get; init; }

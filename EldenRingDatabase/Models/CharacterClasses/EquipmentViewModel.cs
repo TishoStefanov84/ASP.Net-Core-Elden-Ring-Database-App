@@ -4,6 +4,10 @@ namespace EldenRingDatabase.Models.CharacterClasses
 {
     public class EquipmentViewModel
     {
+        public EquipmentViewModel()
+        {
+            this.Weapons = new List<WeaponViewModel>();
+        }
         public int Id { get; init; }
 
         public ICollection<WeaponViewModel> Weapons { get; set; }

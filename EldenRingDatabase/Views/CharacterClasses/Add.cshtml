@@ -1,6 +1,6 @@
 ﻿@model AddCharacterClassFormModel
 
-@{ 
+@{
     ViewData["Title"] = "Add Class";
 }
 
@@ -76,6 +76,42 @@
                     @foreach (var armorSet in Model.ArmorSets)
                     {
                         <option value="@armorSet.Id">@armorSet.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeaponId"></label>
+                <select asp-for="WeaponId" class="form-control" multiple>
+                    @foreach (var weapon in Model.Weapons)
+                    {
+                        <option value="@weapon.Id">@weapon.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShieldId"></label>
+                <select asp-for="ShieldId" class="form-control" multiple>
+                    @foreach (var shield in Model.Shields)
+                    {
+                        <option value="@shield.Id">@shield.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MagicSpellId"></label>
+                <select asp-for="MagicSpellId" class="form-control" multiple>
+                    @foreach (var magicSpell in Model.MagicSpells)
+                    {
+                        <option value="@magicSpell.Id">@magicSpell.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmmunitionId"></label>
+                <select asp-for="AmmunitionId" class="form-control" multiple>
+                    @foreach (var ammunition in Model.Ammunitions)
+                    {
+                        <option value="@ammunition.Id">@ammunition.Name</option>
                     }
                 </select>
             </div>
