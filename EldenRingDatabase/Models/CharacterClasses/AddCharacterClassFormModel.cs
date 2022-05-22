@@ -55,22 +55,22 @@
 
         public ICollection<ArmorSetViewModel> ArmorSets { get; set; }
 
-        [Display(Name = "Weapons")]
+        [Display(Name = "Weapons (Press ctrl for multiple select)")]
         public List<int> WeaponId { get; init; }
 
         public ICollection<WeaponViewModel> Weapons { get; set; }
 
-        [Display(Name = "Shields")]
+        [Display(Name = "Shields (Press ctrl for multiple select)")]
         public List<int> ShieldId { get; init; }
 
         public ICollection<ShieldViewModel> Shields { get; set; }
 
-        [Display(Name = "Magic Spells")]
+        [Display(Name = "Magic Spells (Press ctrl for multiple select)")]
         public List<int> MagicSpellId { get; init; }
 
         public ICollection<MagicSpellViewModel> MagicSpells { get; set; }
 
-        [Display(Name = "Ammunitions")]
+        [Display(Name = "Ammunitions (Press ctrl for multiple select)")]
         public List<int> AmmunitionId { get; init; }
 
         public ICollection<AmmunitionViewModel> Ammunitions { get; set; }

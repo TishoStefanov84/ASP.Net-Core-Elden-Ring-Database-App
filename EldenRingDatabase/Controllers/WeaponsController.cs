@@ -38,11 +38,6 @@
                 this.ModelState.AddModelError(nameof(weapon.SkillId), "Skill not exist.");
             }
 
-            if (!this.data.DamageTypes.Any(d => d.Id == weapon.DamageTypeId))
-            {
-                this.ModelState.AddModelError(nameof(weapon.DamageTypeId), "Damage type not exist.");
-            }
-
             if (!this.data.StatusEffects.Any(s => s.Id == weapon.StatusEffectId))
             {
                 this.ModelState.AddModelError(nameof(weapon.StatusEffectId), "Status effect not exist.");
@@ -64,6 +59,7 @@
                 ImageUrl = weapon.ImageUrl,
                 Discription = weapon.Description,
                 WeaponTypeId = weapon.WeaponTypeId,
+                DamageTypes = this.AddDamageTypes(weapon),
                 SkillId = weapon.SkillId,
                 Weight = double.Parse(weapon.Weight, CultureInfo.InvariantCulture),
                 StatusEffectId = weapon.StatusEffectId,
@@ -109,13 +105,27 @@
                 }
             };
 
-            var damageType = this.data.DamageTypes.First(d => d.Id == weapon.DamageTypeId);
-            weaponData.DamageTypes.Add(damageType);
 
             this.data.Add(weaponData);
             this.data.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        private ICollection<DamageType> AddDamageTypes(AddWeaponFormModel weapon)
+        {
+            var damageTypes = new List<DamageType>();
+
+            if (weapon.DamageTypeId != null)
+            {
+                foreach (var damageTypeId in weapon.DamageTypeId)
+                {
+                    var damageType = this.data.DamageTypes.Where(d => d.Id == damageTypeId).First();
+                    damageTypes.Add(damageType);
+                }
+            }
+
+            return damageTypes;
         }
 
         private ICollection<StatusEffectViewModel> GetStatusEffects()

@@ -6,6 +6,19 @@
     <title>@ViewData["Title"] - Elden Ring Database</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+            .dropdown-submenu .dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-top: -1px;
+            }
+    </style>
 </head>
 <body>
     <header>
@@ -16,48 +29,37 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CharacterClasses" asp-action="Add">Add Class</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Add Weapons And Shields
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Shields" asp-action="Add">Add Shield</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Weapons" asp-action="Add">Add Weapon</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Add Armors
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ChestArmors" asp-action="Add">Add Chest Armor</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Gauntlets" asp-action="Add">Add Gauntlets</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Helms" asp-action="Add">Add Helm</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="LegArmors" asp-action="Add">Add Leg Armor</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ArmorSets" asp-action="Add">Add Armor Set</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Add Skills And Effects
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Skills" asp-action="Add">Add Skill</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="StatusEffects" asp-action="Add">Add Status Effect</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Add Items
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Ammunitions" asp-action="Add">Add Ammunition</a>
-                            </div>
+
+                <div class="dropdown navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                        Add
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link text-dark" asp-area="" asp-controller="CharacterClasses" asp-action="Add">Add Class</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="test nav-link text-dark" tabindex="-1" href="#">Add Weapons And Shields<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Weapons" asp-action="Add">Add Weapon</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Shields" asp-action="Add">Add Shield</a></li>
+                            </ul>
+                            <a class="test nav-link text-dark" tabindex="-1" href="#">Add Armors<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" asp-area="" asp-controller="Helms" asp-action="Add">Add Helm</a></li>
+                                <li><a class="nav-link" asp-area="" asp-controller="ChestArmors" asp-action="Add">Add Chest Armor</a></li>
+                                <li><a class="nav-link" asp-area="" asp-controller="Gauntlets" asp-action="Add">Add Gauntlets</a></li>
+                                <li><a class="nav-link" asp-area="" asp-controller="LegArmors" asp-action="Add">Add Leg Armor</a></li>
+                                <li><a class="nav-link" asp-area="" asp-controller="ArmorSets" asp-action="Add">Add Armor Set</a></li>
+                            </ul>
+                            <a class="test nav-link text-dark" tabindex="-1" href="#">Add Skills And Status Effects<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Skills" asp-action="Add">Add Skill</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="StatusEffects" asp-action="Add">Add Status Effect</a></li>
+                            </ul>
+                            <a class="test nav-link text-dark" tabindex="-1" href="#">Add Items<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Ammunitions" asp-action="Add">Add Ammunition</a></li>
+                            </ul>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -79,6 +81,15 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

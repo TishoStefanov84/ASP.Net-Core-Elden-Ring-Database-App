@@ -39,8 +39,8 @@
 
         public ICollection<SkillViewModel> WeaponSkills { get; set; }
 
-        [Display(Name = "Damage Type")]
-        public int DamageTypeId { get; init; }
+        [Display(Name = "Damage Type (Press ctrl for multiple select)")]
+        public ICollection<int> DamageTypeId { get; init; }
 
         public ICollection<DamageTypeViewModel> DamageTypes { get; set; }
 
