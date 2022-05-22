@@ -1,0 +1,91 @@
+﻿@model AddMagicSpellFormModel
+
+@{
+    ViewData["Title"] = "Add Magic Spell";
+}
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h2 class="heading-margin text-center">Add Magic Spell</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MagicSpellTypeId"></label>
+                <select asp-for="MagicSpellTypeId" class="form-control">
+                    @foreach (var magicSpellType in Model.MagicSpellType)
+                    {
+                        <option value="@magicSpellType.Id">@magicSpellType.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Effect"></label>
+                <textarea asp-for="Effect" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="Effect" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlotUsed"></label>
+                <input asp-for="SlotUsed" type="number" min="0" class="form-control">
+                <span asp-validation-for="SlotUsed" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FPCost"></label>
+                <input asp-for="FPCost" type="number" min="0" class="form-control">
+                <span asp-validation-for="FPCost" class="small text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsLegendary"></label>
+                <input asp-for="IsLegendary" class="form-control" value="true">
+                <span asp-validation-for="IsLegendary" class="small text-danger"></span>
+            </div>
+            <h3 class="heading-margin text-center">Add Magic Spell Requirements</h3>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="Requires.Endurance"></label>
+                    <input asp-for="Requires.Endurance" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Requires.Endurance" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Requires.Strength"></label>
+                    <input asp-for="Requires.Strength" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Requires.Strength" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Requires.Dexterity"></label>
+                    <input asp-for="Requires.Dexterity" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Requires.Dexterity" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Requires.Intelligence"></label>
+                    <input asp-for="Requires.Intelligence" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Requires.Intelligence" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Requires.Faith"></label>
+                    <input asp-for="Requires.Faith" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Requires.Faith" class="small text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Requires.Arcane"></label>
+                    <input asp-for="Requires.Arcane" type="number" min="0" class="form-control">
+                    <span asp-validation-for="Requires.Arcane" class="small text-danger"></span>
+                </div>
+            </div>
+            <input class="btn btn-primary float-right" type="submit" value="Save" />
+        </form>
+    </div>
+</div>

@@ -44,6 +44,7 @@
 
         public const int MagicSpellNameMinLen = 3;
         public const int MagicSpellNameMaxLen = 50;
+        public const int MagicSpellEffectMinLen = 20;
         public const int MagicSpellTypeNameMinLen = 5;
         public const int MagicSpellTypeNameMaxLen = 50;
 
