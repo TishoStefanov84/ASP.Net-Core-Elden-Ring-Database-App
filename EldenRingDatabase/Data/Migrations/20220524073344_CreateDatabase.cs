@@ -114,6 +114,18 @@ namespace EldenRingDatabase.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Equipment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Equipment", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "GuardStats",
                 columns: table => new
                 {
@@ -251,7 +263,9 @@ namespace EldenRingDatabase.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Descripption = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false)
+                    TalismanEffects = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
+                    IsLegendary = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -378,285 +392,6 @@ namespace EldenRingDatabase.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ArmorStats",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DmgNegationId = table.Column<int>(type: "int", nullable: false),
-                    ResistanceId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArmorStats", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ArmorStats_DmgNegations_DmgNegationId",
-                        column: x => x.DmgNegationId,
-                        principalTable: "DmgNegations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ArmorStats_Resistances_ResistanceId",
-                        column: x => x.ResistanceId,
-                        principalTable: "Resistances",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Stats",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AttackStatsId = table.Column<int>(type: "int", nullable: false),
-                    GuardStatsId = table.Column<int>(type: "int", nullable: false),
-                    ScalingId = table.Column<int>(type: "int", nullable: false),
-                    RequiresId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Stats", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Stats_AttackStats_AttackStatsId",
-                        column: x => x.AttackStatsId,
-                        principalTable: "AttackStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Stats_GuardStats_GuardStatsId",
-                        column: x => x.GuardStatsId,
-                        principalTable: "GuardStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Stats_Requires_RequiresId",
-                        column: x => x.RequiresId,
-                        principalTable: "Requires",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Stats_Scalings_ScalingId",
-                        column: x => x.ScalingId,
-                        principalTable: "Scalings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TalismanEffects",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Effect = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TalismanId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TalismanEffects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TalismanEffects_Talismans_TalismanId",
-                        column: x => x.TalismanId,
-                        principalTable: "Talismans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ChestArmors",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", maxLength: 5, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ChestArmors", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ChestArmors_ArmorStats_ArmorStatsId",
-                        column: x => x.ArmorStatsId,
-                        principalTable: "ArmorStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Gauntlets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Gauntlets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Gauntlets_ArmorStats_ArmorStatsId",
-                        column: x => x.ArmorStatsId,
-                        principalTable: "ArmorStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Helms",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Helms", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Helms_ArmorStats_ArmorStatsId",
-                        column: x => x.ArmorStatsId,
-                        principalTable: "ArmorStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LegArmor",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LegArmor", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LegArmor_ArmorStats_ArmorStatsId",
-                        column: x => x.ArmorStatsId,
-                        principalTable: "ArmorStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ArmorSets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<double>(type: "float", nullable: false),
-                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
-                    HelmId = table.Column<int>(type: "int", nullable: false),
-                    ChestArmorId = table.Column<int>(type: "int", nullable: false),
-                    GauntletsId = table.Column<int>(type: "int", nullable: false),
-                    LegArmorId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArmorSets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ArmorSets_ArmorStats_ArmorStatsId",
-                        column: x => x.ArmorStatsId,
-                        principalTable: "ArmorStats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArmorSets_ChestArmors_ChestArmorId",
-                        column: x => x.ChestArmorId,
-                        principalTable: "ChestArmors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArmorSets_Gauntlets_GauntletsId",
-                        column: x => x.GauntletsId,
-                        principalTable: "Gauntlets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArmorSets_Helms_HelmId",
-                        column: x => x.HelmId,
-                        principalTable: "Helms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArmorSets_LegArmor_LegArmorId",
-                        column: x => x.LegArmorId,
-                        principalTable: "LegArmor",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CharacterClasses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RuneLevel = table.Column<int>(type: "int", nullable: false),
-                    Vigor = table.Column<int>(type: "int", nullable: false),
-                    Mind = table.Column<int>(type: "int", nullable: false),
-                    Endurance = table.Column<int>(type: "int", nullable: false),
-                    Strength = table.Column<int>(type: "int", nullable: false),
-                    Dexterity = table.Column<int>(type: "int", nullable: false),
-                    Intelligence = table.Column<int>(type: "int", nullable: false),
-                    Faith = table.Column<int>(type: "int", nullable: false),
-                    Arcane = table.Column<int>(type: "int", nullable: false),
-                    ArmorSetId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CharacterClasses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CharacterClasses_ArmorSets_ArmorSetId",
-                        column: x => x.ArmorSetId,
-                        principalTable: "ArmorSets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Equipment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CharacterClassId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Equipment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Equipment_CharacterClasses_CharacterClassId",
-                        column: x => x.CharacterClassId,
-                        principalTable: "CharacterClasses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Ammunitions",
                 columns: table => new
                 {
@@ -735,6 +470,164 @@ namespace EldenRingDatabase.Migrations
                         name: "FK_MagicSpells_Requires_RequiresId",
                         column: x => x.RequiresId,
                         principalTable: "Requires",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ArmorStats",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DmgNegationId = table.Column<int>(type: "int", nullable: false),
+                    ResistanceId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArmorStats", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ArmorStats_DmgNegations_DmgNegationId",
+                        column: x => x.DmgNegationId,
+                        principalTable: "DmgNegations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ArmorStats_Resistances_ResistanceId",
+                        column: x => x.ResistanceId,
+                        principalTable: "Resistances",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stats",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AttackStatsId = table.Column<int>(type: "int", nullable: false),
+                    GuardStatsId = table.Column<int>(type: "int", nullable: false),
+                    ScalingId = table.Column<int>(type: "int", nullable: false),
+                    RequiresId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stats", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Stats_AttackStats_AttackStatsId",
+                        column: x => x.AttackStatsId,
+                        principalTable: "AttackStats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Stats_GuardStats_GuardStatsId",
+                        column: x => x.GuardStatsId,
+                        principalTable: "GuardStats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Stats_Requires_RequiresId",
+                        column: x => x.RequiresId,
+                        principalTable: "Requires",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Stats_Scalings_ScalingId",
+                        column: x => x.ScalingId,
+                        principalTable: "Scalings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChestArmors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChestArmors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ChestArmors_ArmorStats_ArmorStatsId",
+                        column: x => x.ArmorStatsId,
+                        principalTable: "ArmorStats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Gauntlets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gauntlets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Gauntlets_ArmorStats_ArmorStatsId",
+                        column: x => x.ArmorStatsId,
+                        principalTable: "ArmorStats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Helms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Helms", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Helms_ArmorStats_ArmorStatsId",
+                        column: x => x.ArmorStatsId,
+                        principalTable: "ArmorStats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LegArmor",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LegArmor", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LegArmor_ArmorStats_ArmorStatsId",
+                        column: x => x.ArmorStatsId,
+                        principalTable: "ArmorStats",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -843,6 +736,57 @@ namespace EldenRingDatabase.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ArmorSets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Weight = table.Column<double>(type: "float", nullable: false),
+                    ArmorStatsId = table.Column<int>(type: "int", nullable: false),
+                    HelmId = table.Column<int>(type: "int", nullable: false),
+                    ChestArmorId = table.Column<int>(type: "int", nullable: false),
+                    GauntletsId = table.Column<int>(type: "int", nullable: false),
+                    LegArmorId = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArmorSets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ArmorSets_ArmorStats_ArmorStatsId",
+                        column: x => x.ArmorStatsId,
+                        principalTable: "ArmorStats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ArmorSets_ChestArmors_ChestArmorId",
+                        column: x => x.ChestArmorId,
+                        principalTable: "ChestArmors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ArmorSets_Gauntlets_GauntletsId",
+                        column: x => x.GauntletsId,
+                        principalTable: "Gauntlets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ArmorSets_Helms_HelmId",
+                        column: x => x.HelmId,
+                        principalTable: "Helms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ArmorSets_LegArmor_LegArmorId",
+                        column: x => x.LegArmorId,
+                        principalTable: "LegArmor",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DamageTypeWeapon",
                 columns: table => new
                 {
@@ -862,6 +806,44 @@ namespace EldenRingDatabase.Migrations
                         name: "FK_DamageTypeWeapon_Weapons_WeaponsId",
                         column: x => x.WeaponsId,
                         principalTable: "Weapons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CharacterClasses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RuneLevel = table.Column<int>(type: "int", nullable: false),
+                    Vigor = table.Column<int>(type: "int", nullable: false),
+                    Mind = table.Column<int>(type: "int", nullable: false),
+                    Endurance = table.Column<int>(type: "int", nullable: false),
+                    Strength = table.Column<int>(type: "int", nullable: false),
+                    Dexterity = table.Column<int>(type: "int", nullable: false),
+                    Intelligence = table.Column<int>(type: "int", nullable: false),
+                    Faith = table.Column<int>(type: "int", nullable: false),
+                    Arcane = table.Column<int>(type: "int", nullable: false),
+                    EquipmentId = table.Column<int>(type: "int", nullable: false),
+                    ArmorSetId = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CharacterClasses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CharacterClasses_ArmorSets_ArmorSetId",
+                        column: x => x.ArmorSetId,
+                        principalTable: "ArmorSets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CharacterClasses_Equipment_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "Equipment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -966,6 +948,11 @@ namespace EldenRingDatabase.Migrations
                 column: "ArmorSetId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CharacterClasses_EquipmentId",
+                table: "CharacterClasses",
+                column: "EquipmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ChestArmors_ArmorStatsId",
                 table: "ChestArmors",
                 column: "ArmorStatsId");
@@ -974,11 +961,6 @@ namespace EldenRingDatabase.Migrations
                 name: "IX_DamageTypeWeapon_WeaponsId",
                 table: "DamageTypeWeapon",
                 column: "WeaponsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Equipment_CharacterClassId",
-                table: "Equipment",
-                column: "CharacterClassId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Gauntlets_ArmorStatsId",
@@ -1056,11 +1038,6 @@ namespace EldenRingDatabase.Migrations
                 column: "ScalingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TalismanEffects_TalismanId",
-                table: "TalismanEffects",
-                column: "TalismanId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Weapons_EquipmentId",
                 table: "Weapons",
                 column: "EquipmentId");
@@ -1107,6 +1084,9 @@ namespace EldenRingDatabase.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CharacterClasses");
+
+            migrationBuilder.DropTable(
                 name: "DamageTypeWeapon");
 
             migrationBuilder.DropTable(
@@ -1116,7 +1096,7 @@ namespace EldenRingDatabase.Migrations
                 name: "Shields");
 
             migrationBuilder.DropTable(
-                name: "TalismanEffects");
+                name: "Talismans");
 
             migrationBuilder.DropTable(
                 name: "AmmunitionTypes");
@@ -1126,6 +1106,9 @@ namespace EldenRingDatabase.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "ArmorSets");
 
             migrationBuilder.DropTable(
                 name: "Weapons");
@@ -1140,7 +1123,16 @@ namespace EldenRingDatabase.Migrations
                 name: "ShieldTypes");
 
             migrationBuilder.DropTable(
-                name: "Talismans");
+                name: "ChestArmors");
+
+            migrationBuilder.DropTable(
+                name: "Gauntlets");
+
+            migrationBuilder.DropTable(
+                name: "Helms");
+
+            migrationBuilder.DropTable(
+                name: "LegArmor");
 
             migrationBuilder.DropTable(
                 name: "Equipment");
@@ -1158,7 +1150,7 @@ namespace EldenRingDatabase.Migrations
                 name: "WeaponTypes");
 
             migrationBuilder.DropTable(
-                name: "CharacterClasses");
+                name: "ArmorStats");
 
             migrationBuilder.DropTable(
                 name: "AttackStats");
@@ -1171,24 +1163,6 @@ namespace EldenRingDatabase.Migrations
 
             migrationBuilder.DropTable(
                 name: "Scalings");
-
-            migrationBuilder.DropTable(
-                name: "ArmorSets");
-
-            migrationBuilder.DropTable(
-                name: "ChestArmors");
-
-            migrationBuilder.DropTable(
-                name: "Gauntlets");
-
-            migrationBuilder.DropTable(
-                name: "Helms");
-
-            migrationBuilder.DropTable(
-                name: "LegArmor");
-
-            migrationBuilder.DropTable(
-                name: "ArmorStats");
 
             migrationBuilder.DropTable(
                 name: "DmgNegations");

@@ -55,6 +55,8 @@
 
         public const int TalismanNameMinLen = 3;
         public const int TalismanNameMaxLen = 50;
+        public const int TalismanEffectMinLen = 10;
+        public const int TalismanEffectMaxLen = 1000;
 
         public const int DiscriptionMinLen = 50;
                 

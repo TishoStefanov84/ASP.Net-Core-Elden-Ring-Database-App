@@ -27,7 +27,6 @@
         [Required]
         public string Discription { get; set; }
 
-        [Required]
         public double Weight { get; set; }
 
         public int StatsId { get; set; }

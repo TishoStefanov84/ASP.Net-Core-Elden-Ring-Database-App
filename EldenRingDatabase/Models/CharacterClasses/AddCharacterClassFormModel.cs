@@ -15,6 +15,7 @@
 
         [Display(Name = "Image")]
         [Required]
+        [Url]
         public string ImageUrl { get; set; }
 
         [Range(0, 50)]

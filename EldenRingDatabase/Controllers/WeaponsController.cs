@@ -172,6 +172,7 @@
                 Id = w.Id,
                 Name = w.Name
             })
+            .OrderBy(w => w.Name)
             .ToList();
     }
 }

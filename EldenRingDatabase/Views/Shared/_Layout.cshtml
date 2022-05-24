@@ -20,7 +20,7 @@
             }
     </style>
 </head>
-<body>
+<body style="background-color: #111;font-size: 14px; color: #fff;">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -29,7 +29,6 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="dropdown navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
                         Add
@@ -45,11 +44,11 @@
                             </ul>
                             <a class="test nav-link text-dark" tabindex="-1" href="#">Add Armors<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" asp-area="" asp-controller="Helms" asp-action="Add">Add Helm</a></li>
-                                <li><a class="nav-link" asp-area="" asp-controller="ChestArmors" asp-action="Add">Add Chest Armor</a></li>
-                                <li><a class="nav-link" asp-area="" asp-controller="Gauntlets" asp-action="Add">Add Gauntlets</a></li>
-                                <li><a class="nav-link" asp-area="" asp-controller="LegArmors" asp-action="Add">Add Leg Armor</a></li>
-                                <li><a class="nav-link" asp-area="" asp-controller="ArmorSets" asp-action="Add">Add Armor Set</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Helms" asp-action="Add">Add Helm</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="ChestArmors" asp-action="Add">Add Chest Armor</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Gauntlets" asp-action="Add">Add Gauntlets</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="LegArmors" asp-action="Add">Add Leg Armor</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="ArmorSets" asp-action="Add">Add Armor Set</a></li>
                             </ul>
                             <a class="test nav-link text-dark" tabindex="-1" href="#">Add Skills And Status Effects<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -59,6 +58,7 @@
                             <a class="test nav-link text-dark" tabindex="-1" href="#">Add Items<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link text-dark" asp-area="" asp-controller="Ammunitions" asp-action="Add">Add Ammunition</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Talismans" asp-action="Add">Add Talisman</a></li>
                             </ul>
                         </li>
                         <li><a class="nav-link text-dark" asp-area="" asp-controller="MagicSpells" asp-action="Add">Add Magic Spell</a></li>

@@ -837,10 +837,17 @@ namespace EldenRingDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsLegendary")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TalismanEffects")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
@@ -848,27 +855,6 @@ namespace EldenRingDatabase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Talismans");
-                });
-
-            modelBuilder.Entity("EldenRingDatabase.Data.Models.TalismanEffect", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Effect")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TalismanId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TalismanId");
-
-                    b.ToTable("TalismanEffects");
                 });
 
             modelBuilder.Entity("EldenRingDatabase.Data.Models.Weapon", b =>
@@ -1412,17 +1398,6 @@ namespace EldenRingDatabase.Migrations
                     b.Navigation("Scaling");
                 });
 
-            modelBuilder.Entity("EldenRingDatabase.Data.Models.TalismanEffect", b =>
-                {
-                    b.HasOne("EldenRingDatabase.Data.Models.Talisman", "Talisman")
-                        .WithMany("TalismanEffects")
-                        .HasForeignKey("TalismanId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Talisman");
-                });
-
             modelBuilder.Entity("EldenRingDatabase.Data.Models.Weapon", b =>
                 {
                     b.HasOne("EldenRingDatabase.Data.Models.Equipment", null)
@@ -1576,11 +1551,6 @@ namespace EldenRingDatabase.Migrations
             modelBuilder.Entity("EldenRingDatabase.Data.Models.StatusEffect", b =>
                 {
                     b.Navigation("Weapons");
-                });
-
-            modelBuilder.Entity("EldenRingDatabase.Data.Models.Talisman", b =>
-                {
-                    b.Navigation("TalismanEffects");
                 });
 
             modelBuilder.Entity("EldenRingDatabase.Data.Models.WeaponType", b =>

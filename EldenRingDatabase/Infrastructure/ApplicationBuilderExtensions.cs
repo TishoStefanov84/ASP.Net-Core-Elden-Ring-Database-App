@@ -149,6 +149,11 @@
                     "often finishing off weaker enemies instantly. The animation varies by Weapon type and neither the player nor the " +
                     "target can be damaged by outside sources until the animation has finished."
                 },
+                new DamageType
+                {
+                    Name = "None",
+                    Description = "None"
+                }
             });
 
             data.SaveChanges();

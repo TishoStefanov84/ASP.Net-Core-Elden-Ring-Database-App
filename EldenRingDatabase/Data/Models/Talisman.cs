@@ -7,9 +7,6 @@
 
     public class Talisman
     {
-        public Talisman()
-            => this.TalismanEffects = new HashSet<TalismanEffect>();
-
         public int Id { get; init; }
 
         [Required]
@@ -23,8 +20,10 @@
         public string Descripption { get; set; }
 
         [Required]
+        public string TalismanEffects { get; init; }
+
         public double Weight { get; set; }
 
-        public ICollection<TalismanEffect> TalismanEffects { get; init; }
+        public bool IsLegendary { get; set; }
     }
 }

@@ -65,7 +65,6 @@
 
         public DbSet<Talisman> Talismans { get; init; }
 
-        public DbSet<TalismanEffect> TalismanEffects { get; init; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -152,12 +151,6 @@
              .HasForeignKey(w => w.StatusEffectId)
              .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .Entity<TalismanEffect>()
-                .HasOne(t => t.Talisman)
-                .WithMany(t => t.TalismanEffects)
-                .HasForeignKey(t => t.TalismanId)
-                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Entity<Shield>()

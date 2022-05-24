@@ -81,9 +81,9 @@
                 .Where(h => h.Id == helmId)
                 .FirstOrDefault();
 
-             var helmStats = this.data.ArmorStats
-                .Where(a => a.Id == helm.ArmorStatsId)
-                .FirstOrDefault();
+            var helmStats = this.data.ArmorStats
+               .Where(a => a.Id == helm.ArmorStatsId)
+               .FirstOrDefault();
 
             var helmDmgNegation = GetDmgNegation(helmStats);
             var helmResistance = GetResistance(helmStats);
@@ -134,7 +134,7 @@
         }
 
         private DmgNegation GetDmgNegation(ArmorStats obj)
-            =>  this.data.DmgNegations
+            => this.data.DmgNegations
             .Where(d => d.Id == obj.DmgNegationId)
             .FirstOrDefault();
 
@@ -185,8 +185,8 @@
         private DmgNegation CalcDmgNegation(DmgNegation helm, DmgNegation chestArmor, DmgNegation gauntlets, DmgNegation legArmor)
         {
 
-            var phy = Math.Round(helm.Phy + 
-                chestArmor.Phy + 
+            var phy = Math.Round(helm.Phy +
+                chestArmor.Phy +
                 gauntlets.Phy +
                 legArmor.Phy, 1);
 
@@ -240,12 +240,13 @@
             return dmgNegation;
         }
 
-        private int GetLegArmorId(string legArmorName)
+        private int GetLegArmorId(string setName)
         {
-            var name = legArmorName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var name = setName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var legArmorName = string.Join(" ", name.Take(name.Length - 1));
 
             var legArmor = this.data.LegArmor
-                .Where(l => l.Name.StartsWith(name[0]))
+                .Where(l => l.Name.StartsWith(legArmorName))
                 .FirstOrDefault();
 
             if (legArmor == null)
@@ -256,28 +257,30 @@
             return legArmor.Id;
         }
 
-        private int GetGauntletsId(string gauntletsName)
+        private int GetGauntletsId(string setName)
         {
-            var name = gauntletsName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var name = setName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var gauntletsName = string.Join(" ", name.Take(name.Length - 1));
 
             var gauntlets = this.data.Gauntlets
-                .Where(g => g.Name.StartsWith(name[0]))
+                .Where(g => g.Name.StartsWith(gauntletsName))
                 .FirstOrDefault();
 
             if (gauntlets == null)
             {
-                this.ModelState.AddModelError(nameof(gauntletsName), "Chest armor not exist.");
+                this.ModelState.AddModelError(nameof(gauntletsName), "Gauntlets not exist.");
             }
 
             return gauntlets.Id;
         }
 
-        private int GetChestArmorId(string chestArmorName)
+        private int GetChestArmorId(string setName)
         {
-            var name = chestArmorName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var name = setName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var chestArmorName = string.Join(" ", name.Take(name.Length - 1));
 
             var chestArmor = this.data.ChestArmors
-                .Where(c => c.Name.StartsWith(name[0]))
+                .Where(c => c.Name.StartsWith(chestArmorName))
                 .FirstOrDefault();
 
             if (chestArmor == null)
@@ -288,12 +291,13 @@
             return chestArmor.Id;
         }
 
-        private int GetHelmId(string helmName)
+        private int GetHelmId(string setName)
         {
-            var name = helmName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var name = setName.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            var helmName = string.Join(" ", name.Take(name.Length - 1));
 
             var helm = this.data.Helms
-                .Where(h => h.Name.StartsWith(name[0]))
+                .Where(h => h.Name.StartsWith(helmName))
                 .FirstOrDefault();
 
 
